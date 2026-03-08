@@ -49,15 +49,17 @@
                 const letter = document.getElementById("letter");
                 letter.innerHTML = "";
                 setTimeout(() => {
-                    typeWriter(letter, text, 40);
-                }, 1800);
+                    typeWriter(letter, text, 40, () => {
+                        letter.innerHTML += "<br>Ký tên:<br>Quân deptrai";
+                    });
+                }, 1700);
                 wrapper.classList.remove("v1");
                 wrapper.classList.add("v2");
             }
         }
         const text = "Chúc mừng ngày phụ nữ Việt Nam 8/3 Chúc bạn Thuý Lan có một ngày nghỉ lễ trọn vẹn , luôn luôn vui vẻ và có thể cười tươi mỗi ngày Chúc bạn Thuý Lan ngày càng xinh đẹp ,mặc dù xinh không phải bàn rồi =))) Và đặc biệt là phải thật hạnh phúc an nhiên , bao nhiêu hạnh phúc trên đời đều là của bạn, mỗi ngày trôi qua đều là một ngày hạnh phúc < 3"
 
-        function typeWriter(element, text, speed = 40) {
+        function typeWriter(element, text, speed = 40, onComplete) {
             let i = 0;
             function type() {
                 if (i < text.length) {
@@ -65,6 +67,8 @@
                     element.innerHTML += char === "\n" ? "<br>" : char;
                     i++;
                     setTimeout(type, speed);
+                } else if (onComplete) {
+                    onComplete();
                 }
             }
             type();
