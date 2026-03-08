@@ -6,83 +6,15 @@
     <title>Love Envelope</title>
     <link rel="stylesheet" href="./style.css">
     <style>
-        .container {
-            display: flex;
-            gap: 20px;
-        }
 
-        .wrapper.v2 {
-            transform: scale(1.2) !important;
-        }
-
-        .wrapper.v2 .letter {
-            font-size: 20px;
-        }
-
-        .wrapper.v2 .flower-preview {
-            z-index: 9;
-            transform: scale(2) rotate(-20deg);
-            bottom: 27px;
-            left: 42px;
-        }
-
-        .wrapper.v2 .layout {
-            position: absolute;
-            z-index: 10;
-            height: auto;
-            width: 205px;
-            transform: rotate(21deg);
-            bottom: -20px;
-            right: -54px;
-        }
-
-        .wrapper.v2 {
-            display: none;
-        }
-
-        .wrapper.v2.visible {
-            display: block;
-        }
-
-        .wrapper.v1.hidden {
-            display: none !important;
-        }
-
-        .wrapper.v2 .butterflys {
-            position: absolute;
-            z-index: 11;
-            bottom: 0;
-            width: 360px;
-            height: 350px;
-            padding: 20px;
-            left: 50%;
-            transform: translate(-50%);
-        }
-
-        .butterflys .butterfly {
-            width: 50px;
-            height: auto;
-            position: absolute;
-        }
-
-        .butterfly.butterfly-left {
-            top: 50px;
-            left: -25px;
-        }
-
-        .butterfly.butterfly-right {
-            top: -16px;
-            right: -22px;
-            transform: scaleX(-1);
-        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="wrapper v1" id="wrapperV1" onclick="toggleLetter()">
+    <div class="contains">
+        <div class="wrapper v1" id="wrapper" onclick="toggleLetter()">
             <div class="envelope">
-                <div class="letter">
+                <div class="letter" id="letter">
                     Happy 8/3
                     <br>
                     Nguyễn Thúy Lan
@@ -95,24 +27,9 @@
                 <div class="flowers">
                     <img src="images/flower1.png" alt="" class="flower flower-left">
                     <img src="images/flower1.png" alt="" class="flower flower-right">
-                </div>
-            </div>
-        </div>
-        <div class="wrapper v2 open" id="wrapperV2">
-            <div class="envelope">
-                <div class="letter">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores fugiat error non quis, ratione
-                    tempore. Aperiam odit odio beatae, earum, culpa dolore illum expedita quos provident assumenda
-                    dolorum est vero.
-                    Nguyễn Thúy Lan
-                </div>
-                <div class="left-fold"></div>
-                <div class="right-fold"></div>
-                <div class="flap"></div>
-                <div class="flap-bottom"></div>
-                <div class="flowers">
                     <img src="images/flower2.png" alt="" class="flower flower-preview">
                     <img src="images/khung.png" alt="" class="layout">
+                    <img src="images/tl.jpg" alt="" class="layout avatar">
                 </div>
                 <div class="butterflys">
                     <img src="images/butterfly.png" alt="" class="butterfly butterfly-left">
@@ -122,19 +39,36 @@
         </div>
     </div>
 
-    <script>
 
+    <script>
         function toggleLetter() {
-            const wrapperV1 = document.getElementById("wrapperV1");
-            const wrapperV2 = document.getElementById("wrapperV2");
-            if (!wrapperV1.classList.contains("open")) {
-                wrapperV1.classList.add("open");
+            const wrapper = document.getElementById("wrapper");
+            if (!wrapper.classList.contains("open")) {
+                wrapper.classList.add("open");
             } else {
-                wrapperV1.classList.add("hidden");
-                wrapperV2.classList.add("visible");
+                const letter = document.getElementById("letter");
+                letter.innerHTML = "";
+                setTimeout(() => {
+                    typeWriter(letter, text, 40);
+                }, 1800);
+                wrapper.classList.remove("v1");
+                wrapper.classList.add("v2");
             }
         }
+        const text = "Chúc mừng ngày phụ nữ Việt Nam 8/3 Chúc bạn Thuý Lan có một ngày nghỉ lễ trọn vẹn , luôn luôn vui vẻ và có thể cười tươi mỗi ngày Chúc bạn Thuý Lan ngày càng xinh đẹp ,mặc dù xinh không phải bàn rồi =))) Và đặc biệt là phải thật hạnh phúc an nhiên , bao nhiêu hạnh phúc trên đời đều là của bạn, mỗi ngày trôi qua đều là một ngày hạnh phúc < 3"
 
+        function typeWriter(element, text, speed = 40) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    const char = text.charAt(i);
+                    element.innerHTML += char === "\n" ? "<br>" : char;
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
     </script>
 
 </body>
