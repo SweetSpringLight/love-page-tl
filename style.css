@@ -201,7 +201,7 @@ body {
     transition-delay: 1.5s;
     top: 0;
     left: 0;
-    width: 46px;
+    width: 43px;
 }
 
 .flower-right {
@@ -209,7 +209,7 @@ body {
     right: 0;
     transition-delay: 1.5s;
     z-index: 4;
-    width: 46px;
+    width: 43px;
 }
 
 .wrapper.open .flower {
