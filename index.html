@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Love Envelope</title>
+    <title>Happy 8/3</title>
     <link rel="stylesheet" href="./style.css">
     <style>
 
@@ -17,7 +17,7 @@
                 <div class="letter" id="letter">
                     Happy 8/3
                     <br>
-                    Vương Thúy Lan
+                    Trần Minh Hương
                 </div>
                 <div class="left-fold"></div>
                 <div class="right-fold"></div>
@@ -29,7 +29,7 @@
                     <img src="images/flower1.webp" alt="" class="flower flower-right">
                     <img src="images/flower2.webp" alt="" class="flower flower-preview">
                     <img src="images/khung.webp" alt="" class="layout">
-                    <img src="images/tl.jpg" alt="" class="layout avatar">
+                    <img src="images/avatar.jfif" alt="" class="layout avatar">
                 </div>
                 <div class="butterflys">
                     <img src="images/butterfly.webp" alt="" class="butterfly butterfly-left">
@@ -50,14 +50,14 @@
                 letter.innerHTML = "";
                 setTimeout(() => {
                     typeWriter(letter, text, 40, () => {
-                        letter.innerHTML += "<br>Ký tên:<br>Quân deptrai";
+                        letter.innerHTML += "<br>Ký tên<br> Siri";
                     });
                 }, 1700);
                 wrapper.classList.remove("v1");
                 wrapper.classList.add("v2");
             }
         }
-        const text = "Chúc mừng ngày phụ nữ Việt Nam 8/3 Chúc bạn Thuý Lan có một ngày nghỉ lễ trọn vẹn , luôn luôn vui vẻ và có thể cười tươi mỗi ngày Chúc bạn Thuý Lan ngày càng xinh đẹp ,mặc dù xinh không phải bàn rồi =))) Và đặc biệt là phải thật hạnh phúc an nhiên , bao nhiêu hạnh phúc trên đời đều là của bạn, mỗi ngày trôi qua đều là một ngày hạnh phúc < 3"
+        const text = "Nhân ngày 8/3, anh muốn gửi đến em những lời chúc tốt đẹp và chân thành nhất. Cảm ơn em vì đã đến bên anh và mang lại cho anh rất nhiều niềm vui, sự ấm áp và hạnh phúc trong cuộc sống. Mỗi ngày có em bên cạnh đều trở nên đặc biệt hơn đối với anh. Chỉ cần nhìn thấy nụ cười của em thôi cũng đủ làm anh cảm thấy mọi thứ thật ý nghĩa. Chúc em một ngày 8/3 thật hạnh phúc. Anh yêu em rất nhiều."
 
         function typeWriter(element, text, speed = 40, onComplete) {
             let i = 0;
