@@ -45,7 +45,7 @@
             const wrapper = document.getElementById("wrapper");
             if (!wrapper.classList.contains("open")) {
                 wrapper.classList.add("open");
-            } else {
+            } else if (wrapper.classList.contains("v1")) {
                 const letter = document.getElementById("letter");
                 letter.innerHTML = "";
                 setTimeout(() => {
